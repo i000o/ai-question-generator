@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+a:link {
+  color: inherit; /* no blue default link color */
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit; /* no purple visited links */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+input[type=radio] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+body {
+  font-family: "inter", sans-serif;
+  background-color: #ffffff;
+  color: black;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100svh;
+  text-align: center;
+}
+
+form {
+  margin: 30px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+  font-size: 1.5em;
+  text-align: left;
+  color: rgb(92, 92, 92);
+  letter-spacing: 3%;
+}
+
+section {
+  margin: 40px;
+}
+
+fieldset {
+  border: none;
+  padding: 30px;
+  height: 100px;
+  margin: 0 20px;
+}
+
+fieldset label.step-1 {
+  padding: 20px;
+  margin: 20px;
+  font-size: 1em;
+  letter-spacing: 10%;
+}
+
+fieldset label.step-1:hover {
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+}/*# sourceMappingURL=input.css.map */

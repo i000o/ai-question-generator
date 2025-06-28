@@ -1,0 +1,20 @@
+//_reset.sass 
+
+a:link {
+    color: inherit; /* no blue default link color */ 
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit; /* no purple visited links */ 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  list-style: none;
+}

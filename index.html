@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script rel="script" src="js/script.js"></script>
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
+  <link rel="stylesheet" href="sass/output.css"> 
+  <title>AI Question Generator</title>
+</head>
+
+<body> 
+    <form class="form">
+        <section class="step-1"> 
+        <h1>What do you need your AI's help with? Choose one for now.</h1> <!-- speaking to user-chosen AI, CoPilot, Gemini, ChatGPT whatever-->
+        <fieldset>
+            <!-- You must have a legend element here -->
+            <label class="step-1">
+                <input type="radio" name="concept">Concept</input> <!-- clickable buttons, change to inputs at some point-->
+            </label>
+            <span class="concept-summary"></span> <!-- summary shows of what we mean by a conceptual question - using What? framing -->
+            <label class="step-1"l>
+                <input type="radio" name="structure">Structure</input>
+            </label>
+            <span class="structure-summary"></span> <!-- summary shows of what we mean by a structure question - using How? framing -->
+            <label class="step-1">
+                <input type="radio" name="details">Details</input>
+            </label>
+            <span class="details-summary"></span> <!-- summary shows of what we mean by a details question - using Why? framing -->
+            <label class="step-1"> 
+                <input type="radio" name="technique">Technique</input>
+            </label>
+            <span class="technique-summary"></span> <!-- summary shows of what we mean by a technique question. pragmatic steps -->
+        </fieldset>
+        </section>
+
+        <section class="step-2">
+            <h2>What is the nature of your project?</h2>
+            <label for="project">I want to build a
+                <select id="project">
+                <option value="tip-calculator">tip calculator</option>
+                <option value="landing-page">landing page</option>
+                <option value="rating component">rating component</option>
+                <option value="sign-up-form">sign up form</option>
+                </select>
+            </label>
+            <label for="tool">with
+                <select id="tool">
+                <option value="javascript">JavaScript</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="python">Python</option>
+                <option value="react.js">React.js</option>
+                <option value="node.js">Node.js</option>
+                </select>
+            </label>
+        </section>
+
+        <section class="question-output"> 
+            <h3>Try this:</h3>
+            <span></span> <!-- Produces a question for AI assist based on info provided -->
+        </section>
+
+        <section class="feedback"> 
+            <h4>Did that help?</h4> <!-- leads to flow Y/N and repeat. -->
+            <!-- need arrow images - design in AI, literally a line -->
+            <label>
+                <input type="radio" value="yes" name="yes">Yes</input>
+            </label>
+            <label>
+                <input type="radio" value="no" name="no">No</input>
+            </label>
+        </section>
+    </form>
+
+    <footer>
+        <p> Designed and Engineered by Iman Osman.</p>
+        <p>2025 &copy; Iman Osman </p>
+    </footer>
+</body>
