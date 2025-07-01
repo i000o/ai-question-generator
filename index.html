@@ -13,7 +13,7 @@
     <form class="form">
         <section class="step-1"> 
         <h1>What do you need your AI's help with? Choose one for now.</h1> <!-- speaking to user-chosen AI, CoPilot, Gemini, ChatGPT whatever-->
-        <fieldset>
+        <fieldset class="step-1">
             <!-- You must have a legend element here -->
             <label class="step-1">
                 <input type="radio" name="concept" required class="topic">Concept</input> <!-- clickable buttons, change to inputs at some point-->
@@ -37,7 +37,7 @@
         <section class="step-2">
             <h2>What is the nature of your project?</h2>
             <label for="project">I want to build a
-                <select id="project">
+                <select id="project" class="project">
                 <option value="tip-calculator">tip calculator</option>
                 <option value="landing-page">landing page</option>
                 <option value="rating component">rating component</option>
@@ -45,7 +45,7 @@
                 </select>
             </label>
             <label for="tool">with
-                <select id="tool">
+                <select id="tool" class="tool">
                 <option value="javascript">JavaScript</option>
                 <option value="kotlin">Kotlin</option>
                 <option value="python">Python</option>
@@ -61,14 +61,17 @@
         </section>
 
         <section class="feedback"> 
-            <h4>Did that help?</h4> <!-- leads to flow Y/N and repeat. -->
+            <fieldset class="feedback"> 
+                <legend>Did that help?</legend>
+                    <label>
+                        <input type="radio" value="yes" name="yes">Yes</input>
+                    </label>
+                    <label>
+                        <input type="radio" value="no" name="no">No</input>
+                    </label>
+            </fieldset>
+            <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
             <!-- need arrow images - design in AI, literally a line -->
-            <label>
-                <input type="radio" value="yes" name="yes">Yes</input>
-            </label>
-            <label>
-                <input type="radio" value="no" name="no">No</input>
-            </label>
         </section>
     </form>
 
