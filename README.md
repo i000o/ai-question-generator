@@ -45,7 +45,7 @@ Answer: Please explain to me the key concepts and principles that I would need t
 Same prompt.
 Structure selection.
 
-Answer: Structurally, how would I approach planning my code for a project like this. Break it down step by step in chronological order according to best practice. I want to understand what steps I need to include in my Javascript, in which order should they come so that I can break the task down piece by piece.
+Answer: Structurally, how would I approach planning my code for a project like this? Break it down step by step in chronological order according to best practice. I want to understand what steps I need to include in my Javascript, in which order should they come so that I can break the task down piece by piece.
 
 Same prompt.
 Details selection.
@@ -65,4 +65,17 @@ Changes/Transformations:
 4.
 
 What about a "You've completed the sequence of questions we have available! Hopefully now you can get into the nitty-gritty with your AI assist with more confidence about how to interact with it to yield the best results."
+
+To do:
+Use `transform` on fieldset instead of increased `font-size`
+Change `h1` to `legend` without disrupting the structure of the styles
+
+Development:
+To have one Q appear at a time onscreen.
+
+Lessons:
+`forEach()` JS method -
+Convention: Many developers shorten “element” to el or “item” to it.
+`change` events in JS.
+
 # ai-question-generator
