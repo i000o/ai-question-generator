@@ -21,11 +21,11 @@ body {
     color: black; 
     font-size: 0.8em; 
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 100svh; 
     text-align: center;
+    width: 100%; 
 }
 
 form { 
@@ -45,7 +45,7 @@ h1, h2, h3, h4 {
 // }
 
 section { 
-    margin: 40px; 
+    margin: 60px 0; 
 }
 
 fieldset { 
@@ -55,7 +55,7 @@ fieldset {
     margin: 0 20px; 
 }
 
-fieldset label.step-1 { 
+.step-1 label, .feedback label { 
     // border-radius: 200%; 
     padding: 20px; 
     margin: 20px; 
@@ -63,11 +63,29 @@ fieldset label.step-1 {
     letter-spacing: 10%;
 }
 
-fieldset label.step-1:hover { 
+legend { 
+    text-align: left; 
+    // all: unset; 
+}
+
+fieldset label { 
+    margin-top: 50px; 
+}
+
+.step-2 { 
+    // margin doesn't work 
+}
+
+fieldset label:hover { 
     font-size: 1.1em; 
     font-weight: 500; 
     transition: 0.2s; 
     // use transform not font-size change - come back to this 
+}
+
+fieldset label input:hover {
+  transform: scaleX(1.5); /* Grows the whole input element by 20% */
+  transition: transform 0.2s ease-in-out; /* Smooths out the scaling */
 }
 
 // on hover, show summaries of what these words mean 

@@ -12,23 +12,26 @@
 <body> 
     <form class="form">
         <section class="step-1"> 
-        <h1>What do you need your AI's help with? Choose one for now.</h1> <!-- speaking to user-chosen AI, CoPilot, Gemini, ChatGPT whatever-->
         <fieldset class="step-1">
-            <!-- You must have a legend element here -->
+            <legend>
+                <h1> 
+                    What do you need your AI's help with? Choose one for now.
+                </h1>
+            </legend>
             <label class="step-1">
-                <input type="radio" name="concept" required class="topic">Concept</input> <!-- clickable buttons, change to inputs at some point-->
+                <input type="radio" name="concept" required class="topic">Concept <!-- clickable buttons, change to inputs at some point-->
             </label>
             <span class="concept-summary"></span> <!-- summary shows of what we mean by a conceptual question - using What? framing -->
-            <label class="step-1"l>
-                <input type="radio" name="structure" required class="topic">Structure</input>
+            <label class="step-1">
+                <input type="radio" name="structure" required class="topic">Structure
             </label>
             <span class="structure-summary"></span> <!-- summary shows of what we mean by a structure question - using How? framing -->
             <label class="step-1">
-                <input type="radio" name="details" required class="topic">Details</input>
+                <input type="radio" name="details" required class="topic">Details
             </label>
             <span class="details-summary"></span> <!-- summary shows of what we mean by a details question - using Why? framing -->
             <label class="step-1"> 
-                <input type="radio" name="technique" required class="topic">Technique</input>
+                <input type="radio" name="technique" required class="topic">Technique
             </label>
             <span class="technique-summary"></span> <!-- summary shows of what we mean by a technique question. pragmatic steps -->
         </fieldset>
@@ -62,13 +65,17 @@
 
         <section class="feedback"> 
             <fieldset class="feedback"> 
-                <legend>Did that help?</legend>
-                    <label>
-                        <input type="radio" value="yes" name="yes">Yes</input>
-                    </label>
-                    <label>
-                        <input type="radio" value="no" name="no">No</input>
-                    </label>
+                <legend>
+                    <h4> 
+                        Did that help?
+                    </h4>
+                </legend>
+                <label>
+                    <input type="radio" value="yes" name="yes">Yes
+                </label>
+                <label>
+                    <input type="radio" value="no" name="no">No
+                </label>
             </fieldset>
             <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
             <!-- need arrow images - design in AI, literally a line -->

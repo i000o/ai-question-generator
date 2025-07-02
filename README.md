@@ -67,8 +67,9 @@ Changes/Transformations:
 What about a "You've completed the sequence of questions we have available! Hopefully now you can get into the nitty-gritty with your AI assist with more confidence about how to interact with it to yield the best results."
 
 To do:
-Use `transform` on fieldset instead of increased `font-size`
+Debug `<fieldset>` transforms to stop the whole form jolting.
 Change `h1` to `legend` without disrupting the structure of the styles
+Responsive: keywords cluster on viewport shrink
 
 Development:
 To have one Q appear at a time onscreen.
