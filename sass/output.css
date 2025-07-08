@@ -59,9 +59,9 @@ section {
 
 fieldset {
   border: none;
-  padding: 30px;
   height: 100px;
-  margin: 0 20px;
+  padding: 0;
+  margin: 0;
 }
 
 .step-1 label, .feedback label {
@@ -76,18 +76,13 @@ legend {
 }
 
 fieldset label {
-  margin-top: 50px;
+  display: inline-block;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
 }
 
 fieldset label:hover {
-  font-size: 1.1em;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-fieldset label input:hover {
-  transform: scaleX(1.5); /* Grows the whole input element by 20% */
-  transition: transform 0.2s ease-in-out; /* Smooths out the scaling */
+  transform: scale(1.1);
 }
 
 footer {
