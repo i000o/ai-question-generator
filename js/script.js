@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", init);
     // Why do we come out now? 
 
     function generateQuestion() { 
-        const formData = new formData(document.querySelector{".form"}); // What's "new" doing here? 
+        const formData = new formData(document.querySelector(".form")); // What's "new" doing here? 
         const topic = formData.get('.topic'); // What's .get() method? 
         const project = formData.get('.project');
         const tool = formData.get('.tool'); 
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", init);
             Concept: `
             Please explain the key concepts and principles to consider to approach building a <span class="highlight">_project_<span> with <span class="highlight">_tool_</span>. 
             Do not show any code yet. I only want to understand the most crucial things to consider when approaching a task like this.
-            `, // What is <span class="highlight">_project_</span>?
+            ` // What is <span class="highlight">_project_</span>?
             Structure: `
             Structurally, how would I approach planning my code for a project like this? Break it down step by step in chronological order,according to best practice. I want to understand what steps I need to include in my <span class="highlight">_tool_</span>, in which order should they come so that I can break the task down piece by piece.
             ` // We can edit the wording of these questions to improve 
