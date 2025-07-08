@@ -1,3 +1,12 @@
+Table of contents
+
+-
+-
+-
+-
+-
+-
+
 **AI Question Generator**
 
 Designed for learning software developers in a time when using AI in your workflow is highly encouraged; I've found that the most helpful exchanges I've had with an AI tool during a project, occur when I can ask meaningful questions that get to the heart of the problem and move methodically through the problem-solving process.
