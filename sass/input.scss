@@ -59,6 +59,14 @@ fieldset {
     letter-spacing: 10%;
 }
 
+.step-2 h2 { 
+    margin-bottom: 40px; 
+}
+
+.step-2 label { 
+    letter-spacing: 3%;
+}
+
 legend { 
     text-align: left; 
     // all: unset; 
@@ -75,10 +83,6 @@ fieldset label:hover {
   transform: scale(1.1);
 }
 
-.step-2 label { 
-    letter-spacing: 3%;
-}
-
 select.project, 
 select.tool  { 
     padding: 10px 15px;
@@ -87,6 +91,10 @@ select.tool  {
     background-color: #c6c6c6;
     letter-spacing: 3%;
     color: inherit; 
+}
+
+.feedback { 
+    margin-bottom: 80px; 
 }
 
 footer { 

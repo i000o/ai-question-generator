@@ -5,9 +5,7 @@ Table of contents
 -
 -
 -
--
-
-**AI Question Generator**
+- **AI Question Generator**
 
 Designed for learning software developers in a time when using AI in your workflow is highly encouraged; I've found that the most helpful exchanges I've had with an AI tool during a project, occur when I can ask meaningful questions that get to the heart of the problem and move methodically through the problem-solving process.
 This may not come so naturally to all. I believe that if one can understand how _they_ learn best, they can do anything they commit to. But this is not necessarily a skill we are taught. It takes time and is dependant on us spending a lot of time trying to understand something amidst the frustration and natural ups and downs of learning.
@@ -83,12 +81,12 @@ Changes/Transformations:
 
 **To do:**
 Debug `<fieldset>` transforms to stop the whole form jolting.
-Change `h1` to `legend` without disrupting the structure of the styles
 Responsive: keywords cluster on viewport shrink
 
 **Learnings:**
 `forEach()` JS method -
 Convention: Many developers shorten “element” to el or “item” to it.
 `change` events in JS.
+`Issues` in GitHub Repo
 
 # ai-question-generator
