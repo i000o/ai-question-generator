@@ -1,89 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-  <script rel="script" src="js/script.js"></script>
-  <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
-  <link rel="stylesheet" href="sass/output.css"> 
-  <title>AI Question Generator</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
 
-<body> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <!-- Here I remove the rel attributte. 
+   before → `<script rel="script" src="js/script.js"></script>`  -->
+    <script src="js/script.js"></script>
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
+    <link rel="stylesheet" href="sass/output.css" />
+    <title>AI Question Generator</title>
+  </head>
+
+  <body>
     <form class="form">
-        <section class="step-1"> 
+      <section class="step-1">
         <fieldset class="step-1">
-            <legend>
-                <h1> 
-                    What do you need your AI's help with? Choose one for now.
-                </h1>
-            </legend>
-            <label class="step-1">
-                <input type="radio" name="concept" required class="topic">Concept <!-- clickable buttons, change to inputs at some point-->
-            </label>
-            <span class="concept-summary"></span> <!-- summary shows of what we mean by a conceptual question - using What? framing -->
-            <label class="step-1">
-                <input type="radio" name="structure" required class="topic">Structure
-            </label>
-            <span class="structure-summary"></span> <!-- summary shows of what we mean by a structure question - using How? framing -->
-            <label class="step-1">
-                <input type="radio" name="details" required class="topic">Details
-            </label>
-            <span class="details-summary"></span> <!-- summary shows of what we mean by a details question - using Why? framing -->
-            <label class="step-1"> 
-                <input type="radio" name="technique" required class="topic">Technique
-            </label>
-            <span class="technique-summary"></span> <!-- summary shows of what we mean by a technique question. pragmatic steps -->
+          <legend>
+            <h1>What do you need your AI's help with? Choose one for now.</h1>
+          </legend>
+          <label class="step-1">
+            <input type="radio" name="concept" required class="topic" />Concept
+            <!-- clickable buttons, change to inputs at some point-->
+          </label>
+          <span class="concept-summary"></span>
+          <!-- summary shows of what we mean by a conceptual question - using What? framing -->
+          <label class="step-1">
+            <input
+              type="radio"
+              name="structure"
+              required
+              class="topic"
+            />Structure
+          </label>
+          <span class="structure-summary"></span>
+          <!-- summary shows of what we mean by a structure question - using How? framing -->
+          <label class="step-1">
+            <input type="radio" name="details" required class="topic" />Details
+          </label>
+          <span class="details-summary"></span>
+          <!-- summary shows of what we mean by a details question - using Why? framing -->
+          <label class="step-1">
+            <input
+              type="radio"
+              name="technique"
+              required
+              class="topic"
+            />Technique
+          </label>
+          <span class="technique-summary"></span>
+          <!-- summary shows of what we mean by a technique question. pragmatic steps -->
         </fieldset>
-        </section>
+      </section>
 
-        <section class="step-2">
-            <h2>What is the nature of your project?</h2>
-            <label for="project">I want to build a
-                <select id="project" class="project">
-                <option value="tip-calculator">tip calculator</option>
-                <option value="landing-page">landing page</option>
-                <option value="rating component">rating component</option>
-                <option value="sign-up-form">sign up form</option>
-                </select>
-            </label>
-            <label for="tool">with
-                <select id="tool" class="tool">
-                <option value="javascript">JavaScript</option>
-                <option value="kotlin">Kotlin</option>
-                <option value="python">Python</option>
-                <option value="react.js">React.js</option>
-                <option value="node.js">Next.js</option>
-                </select>
-            </label>
-        </section>
+      <section class="step-2">
+        <h2>What is the nature of your project?</h2>
+        <label for="project"
+          >I want to build a
+          <select id="project" class="project">
+            <option value="tip-calculator">tip calculator</option>
+            <option value="landing-page">landing page</option>
+            <option value="rating component">rating component</option>
+            <option value="sign-up-form">sign up form</option>
+          </select>
+        </label>
+        <label for="tool"
+          >with
+          <select id="tool" class="tool">
+            <option value="javascript">JavaScript</option>
+            <option value="kotlin">Kotlin</option>
+            <option value="python">Python</option>
+            <option value="react.js">React.js</option>
+            <option value="node.js">Next.js</option>
+          </select>
+        </label>
+      </section>
 
-        <section class="question-output"> 
-            <h3>Try this:</h3>
-            <span></span> <!-- Produces a question for AI assist based on info provided -->
-        </section>
+      <section class="question-output">
+        <h3>Try this:</h3>
+        <span></span>
+        <!-- Produces a question for AI assist based on info provided -->
+      </section>
 
-        <section class="feedback"> 
-            <fieldset class="feedback"> 
-                <legend>
-                    <h4> 
-                        Did that help?
-                    </h4>
-                </legend>
-                <label>
-                    <input type="radio" value="yes" name="yes">Yes
-                </label>
-                <label>
-                    <input type="radio" value="no" name="no">No
-                </label>
-            </fieldset>
-            <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
-            <!-- need arrow images - design in AI, literally a line -->
-        </section>
+      <section class="feedback">
+        <fieldset class="feedback">
+          <legend>
+            <h4>Did that help?</h4>
+          </legend>
+          <label> <input type="radio" value="yes" name="yes" />Yes </label>
+          <label> <input type="radio" value="no" name="no" />No </label>
+        </fieldset>
+        <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
+        <!-- need arrow images - design in AI, literally a line -->
+      </section>
     </form>
 
     <footer>
-        <p> Designed and Engineered by Iman Osman.</p>
-        <p>2025 &copy; Iman Osman </p>
+      <p>Designed and Engineered by Iman Osman.</p>
+      <p>2025 &copy; Iman Osman</p>
     </footer>
-</body>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "ai-question-generator",
+  "version": "1.0.1",
+  "description": "**Table of contents**",
+  "homepage": "https://github.com/Ariel-GonzAguer/ai-question-generator#readme",
+  "bugs": {
+    "url": "https://github.com/Ariel-GonzAguer/ai-question-generator/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ariel-GonzAguer/ai-question-generator.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}
