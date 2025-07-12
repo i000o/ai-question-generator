@@ -1,68 +1,21 @@
-// Variables declarations
-let form;
+// Script para AI Question Generator
+console.log('Script iniciando...');
 
-// Esperar a que el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar variables después de que el DOM esté listo
-    form = document.getElementById('form');
-    
-    // Configurar event listeners
-    setupEventListeners();
+// Variables
+const form = document.getElementById('form');
+const radioButtons = document.querySelectorAll('input[name="topic"]');
+
+console.log('Encontrados ' + radioButtons.length + ' radio buttons');
+
+// Configurar eventos de radio buttons
+radioButtons.forEach((radio, index) => {
+    radio.onchange = function() {
+        console.log('Radio seleccionado:', this.value);
+        updateTopicSummary(this.value);
+    };
 });
 
-// Configurar todos los event listeners
-function setupEventListeners() {
-    // Event listener para detectar cambios en los radio buttons
-    document.querySelectorAll('input[name="topic"]').forEach(radio => {
-        radio.addEventListener('change', function() {
-            const selectedValue = this.value;
-            console.log('Topic seleccionado:', selectedValue);
-            
-            // Actualizar el resumen del topic
-            updateTopicSummary(selectedValue);
-        });
-    });
-
-    // Event listener para el formulario
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const selectedTopic = getSelectedTopic();
-            const selectedProject = getSelectedProject();
-            const selectedTool = getSelectedTool();
-            
-            console.log('Datos del formulario:', {
-                topic: selectedTopic,
-                project: selectedProject,
-                tool: selectedTool
-            });
-            
-            // Generar la pregunta para la AI
-            generateAIQuestion(selectedTopic, selectedProject, selectedTool);
-        });
-    }
-}
-
-// Función para obtener el valor seleccionado del grupo de radio buttons
-function getSelectedTopic() {
-    const selectedTopic = document.querySelector('input[name="topic"]:checked');
-    return selectedTopic ? selectedTopic.value : null;
-}
-
-// Función para obtener el valor seleccionado del proyecto
-function getSelectedProject() {
-    const projectSelect = document.getElementById('project');
-    return projectSelect.value;
-}
-
-// Función para obtener el valor seleccionado de la herramienta
-function getSelectedTool() {
-    const toolSelect = document.getElementById('tool');
-    return toolSelect.value;
-}
-
-// Función para actualizar el resumen del topic seleccionado
+// Función para actualizar resumen
 function updateTopicSummary(topic) {
     console.log('Actualizando resumen para:', topic);
     
@@ -74,7 +27,7 @@ function updateTopicSummary(topic) {
     // Mostrar el resumen correspondiente
     const summaryMap = {
         'concept': 'What is this? Understanding the fundamental idea or principle.',
-        'structure': 'How is this organized? Understanding the architecture and components.',
+        'structure': 'How is this organized? Understanding the architecture and components.',  
         'details': 'Why does this work? Understanding the specific implementation.',
         'technique': 'How do I implement this? Step-by-step practical approach.'
     };
@@ -83,14 +36,51 @@ function updateTopicSummary(topic) {
         const summaryElement = document.querySelector(`.${topic}-summary`);
         if (summaryElement) {
             summaryElement.textContent = summaryMap[topic];
-            console.log('Resumen actualizado:', summaryMap[topic]);
+            console.log('Resumen actualizado correctamente');
         } else {
-            console.log('No se encontró el elemento:', `.${topic}-summary`);
+            console.log('No se encontró elemento:', topic + '-summary');
         }
     }
 }
 
-// Función para generar la pregunta para la AI
+// Función para obtener el valor seleccionado
+function getSelectedTopic() {
+    const selectedTopic = document.querySelector('input[name="topic"]:checked');
+    return selectedTopic ? selectedTopic.value : null;
+}
+
+// Función para obtener proyecto
+function getSelectedProject() {
+    const projectSelect = document.getElementById('project');
+    return projectSelect ? projectSelect.value : '';
+}
+
+// Función para obtener herramienta
+function getSelectedTool() {
+    const toolSelect = document.getElementById('tool');
+    return toolSelect ? toolSelect.value : '';
+}
+
+// Event listener para el formulario
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const selectedTopic = getSelectedTopic();
+        const selectedProject = getSelectedProject();
+        const selectedTool = getSelectedTool();
+        
+        console.log('Datos del formulario:', {
+            topic: selectedTopic,
+            project: selectedProject, 
+            tool: selectedTool
+        });
+        
+        generateAIQuestion(selectedTopic, selectedProject, selectedTool);
+    });
+}
+
+// Función para generar pregunta
 function generateAIQuestion(topic, project, tool) {
     if (!topic || !project || !tool) {
         alert('Por favor completa todos los campos');
@@ -106,7 +96,7 @@ function generateAIQuestion(topic, project, tool) {
     
     const question = questionTemplates[topic];
     
-    // Mostrar la pregunta en el span de output
+    // Mostrar la pregunta
     const outputSpan = document.getElementById('outputSpan');
     if (outputSpan) {
         outputSpan.textContent = question;

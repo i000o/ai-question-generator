@@ -5,10 +5,6 @@
     <!-- displays site properly based on user's device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Here I remove the rel attribute. 
-   before → `<script rel="script" src="js/script.js"></script>`  -->
-    <script src="js/script.js"></script>
-
     <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
     <link rel="stylesheet" href="styles/index.css" />
     <title>AI Question Generator</title>
@@ -112,7 +108,7 @@
               </option>
             </select>
           </label>
-          <label for="tool" id="tool" class="text-lg"
+          <label for="tool" class="text-lg"
             >with
             <select
               id="tool"
@@ -142,7 +138,7 @@
           <h3>Try this:</h3>
           <span
             id="outputSpan"
-            class="text-lg text-center w-40 border-2 border-slate-800 rounded p-2 bg-slate-800 text-amber-400"
+            class="text-lg text-center w-auto border-2 border-slate-800 rounded p-2 bg-slate-800 text-amber-400"
           ></span>
           <!-- Produces a question for AI assist based on info provided -->
         </section>
@@ -186,5 +182,8 @@
       <p>Designed and Engineered by Iman Osman.</p>
       <p>2025 &copy; Iman Osman</p>
     </footer>
+
+    <!-- Script al final del body para que el DOM esté listo -->
+    <script src="js/script.js"></script>
   </body>
 </html>
