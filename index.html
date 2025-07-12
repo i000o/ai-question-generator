@@ -129,34 +129,59 @@
           </label>
         </section>
 
-        <section class="flex flex-col items-center mt-8">
-          <h3>Try this:</h3>
-          <span id="outputSpan" class="text-lg text-center w-40 border-2 border-slate-800 rounded p-2 bg-slate-800 text-amber-400"></span>
-          <!-- Produces a question for AI assist based on info provided -->
+        <section class="flex justify-center mt-6">
+          <button
+            type="submit"
+            class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
+          >
+            Generate AI Question
+          </button>
         </section>
 
-        <section class="feedback">
-          <fieldset class="feedback">
-            <legend class="text-lg">
-              <h4>Did that help?</h4>
-            </legend>
-            <label class="flex items-center"> 
-              <input type="radio" value="yes" id="yes" name="feedback" class="h-5 w-5 text-lg" required/> 
-              <span class="ml-2">Yes</span>
-            </label>
-            <label class="flex items-center"> 
-              <input type="radio" value="no" id="no" name="feedback" class="h-5 w-5 text-lg" required/> 
-              <span class="ml-2">No</span>
-            </label>
-          </fieldset>
-          <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
-          <!-- need arrow images - design in AI, literally a line -->
+        <section class="flex flex-col items-center mt-8">
+          <h3>Try this:</h3>
+          <span
+            id="outputSpan"
+            class="text-lg text-center w-40 border-2 border-slate-800 rounded p-2 bg-slate-800 text-amber-400"
+          ></span>
+          <!-- Produces a question for AI assist based on info provided -->
         </section>
       </form>
+      <section class="feedback">
+        <fieldset class="feedback">
+          <legend class="text-lg">
+            <h4>Did that help?</h4>
+          </legend>
+          <label class="flex items-center">
+            <input
+              type="radio"
+              value="yes"
+              id="yes"
+              name="feedback"
+              class="h-5 w-5 text-lg"
+              required
+            />
+            <span class="ml-2">Yes</span>
+          </label>
+          <label class="flex items-center">
+            <input
+              type="radio"
+              value="no"
+              id="no"
+              name="feedback"
+              class="h-5 w-5 text-lg"
+              required
+            />
+            <span class="ml-2">No</span>
+          </label>
+        </fieldset>
+        <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
+        <!-- need arrow images - design in AI, literally a line -->
+      </section>
     </main>
 
     <footer
-      class="fixed bottom-0 w-full text-center bg-gray-800 text-white p-1 flex justify-between"
+      class="relative bottom-0 w-full text-center bg-gray-800 text-white p-1 flex justify-between"
     >
       <p>Designed and Engineered by Iman Osman.</p>
       <p>2025 &copy; Iman Osman</p>

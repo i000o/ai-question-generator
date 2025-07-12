@@ -1,57 +1,116 @@
-document.addEventListener("DOMContentLoaded", init); 
+// Variables declarations
+let form;
+
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar variables después de que el DOM esté listo
+    form = document.getElementById('form');
     
-    // declare variables 
-    function init() { 
-        const form = document.querySelector(".form"); 
-        const controls = form.querySelectorAll('input', 'select');
+    // Configurar event listeners
+    setupEventListeners();
+});
 
-        controls.forEach(el => el.addEventListener('change', tryGenerate)); //
+// Configurar todos los event listeners
+function setupEventListeners() {
+    // Event listener para detectar cambios en los radio buttons
+    document.querySelectorAll('input[name="topic"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const selectedValue = this.value;
+            console.log('Topic seleccionado:', selectedValue);
+            
+            // Actualizar el resumen del topic
+            updateTopicSummary(selectedValue);
+        });
+    });
+
+    // Event listener para el formulario
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const selectedTopic = getSelectedTopic();
+            const selectedProject = getSelectedProject();
+            const selectedTool = getSelectedTool();
+            
+            console.log('Datos del formulario:', {
+                topic: selectedTopic,
+                project: selectedProject,
+                tool: selectedTool
+            });
+            
+            // Generar la pregunta para la AI
+            generateAIQuestion(selectedTopic, selectedProject, selectedTool);
+        });
     }
+}
 
-    function tryGenerate() { 
-        const form = document.querySelector(".form"); 
+// Función para obtener el valor seleccionado del grupo de radio buttons
+function getSelectedTopic() {
+    const selectedTopic = document.querySelector('input[name="topic"]:checked');
+    return selectedTopic ? selectedTopic.value : null;
+}
 
-        if (!form.checkValidity()) { //What's .checkValidity doing here? 
-            hideOutput(); // What's this? 
-            return; // Why is 'return' blank? 
+// Función para obtener el valor seleccionado del proyecto
+function getSelectedProject() {
+    const projectSelect = document.getElementById('project');
+    return projectSelect.value;
+}
+
+// Función para obtener el valor seleccionado de la herramienta
+function getSelectedTool() {
+    const toolSelect = document.getElementById('tool');
+    return toolSelect.value;
+}
+
+// Función para actualizar el resumen del topic seleccionado
+function updateTopicSummary(topic) {
+    console.log('Actualizando resumen para:', topic);
+    
+    // Limpiar todos los resúmenes
+    document.querySelectorAll('.concept-summary, .structure-summary, .details-summary, .technique-summary').forEach(span => {
+        span.textContent = '';
+    });
+    
+    // Mostrar el resumen correspondiente
+    const summaryMap = {
+        'concept': 'What is this? Understanding the fundamental idea or principle.',
+        'structure': 'How is this organized? Understanding the architecture and components.',
+        'details': 'Why does this work? Understanding the specific implementation.',
+        'technique': 'How do I implement this? Step-by-step practical approach.'
+    };
+    
+    if (summaryMap[topic]) {
+        const summaryElement = document.querySelector(`.${topic}-summary`);
+        if (summaryElement) {
+            summaryElement.textContent = summaryMap[topic];
+            console.log('Resumen actualizado:', summaryMap[topic]);
+        } else {
+            console.log('No se encontró el elemento:', `.${topic}-summary`);
         }
-
-        generateQuestion(); // Why can we use this function before we've declared/assigned it? 
     }
+}
 
-    // Why do we come out now? 
-
-    function generateQuestion() { 
-        const formData = new formData(document.querySelector(".form")); // What's "new" doing here? 
-        const topic = formData.get('.topic'); // What's .get() method? 
-        const project = formData.get('.project');
-        const tool = formData.get('.tool'); 
-        const TEMPLATES = { // Why caps? 
-            Concept: `
-            Please explain the key concepts and principles to consider to approach building a <span class="highlight">_project_<span> with <span class="highlight">_tool_</span>. 
-            Do not show any code yet. I only want to understand the most crucial things to consider when approaching a task like this.
-            ` // What is <span class="highlight">_project_</span>?
-            Structure: `
-            Structurally, how would I approach planning my code for a project like this? Break it down step by step in chronological order,according to best practice. I want to understand what steps I need to include in my <span class="highlight">_tool_</span>, in which order should they come so that I can break the task down piece by piece.
-            ` // We can edit the wording of these questions to improve 
-            Details: `
-            Are there any key details that I need to consider in a project like this? Ensure I am not overlooking any best practices in relation to accessibility or otherwise. Consider what kind of specifications might make my tip calculator unique or future-oriented? What are some common features a strong, scalable calculator might have?
-            ` 
-            Technique: `
-            Considering all of the above, walk me through, step by step, the pragmatic things I would need to implement from start to finish to write this tip calculator. Talk me through the programming logic it would require to work. Consider how to keep my code clean. What do I need to make sure I complete to have a well-functioning <span class="highlight">_project_</span> by the end?
-            `
-        }
-
-            const html = template 
-                .replace(/--project--/g, escapeHTML(project)) 
-                .replace(/--tool--/g, escapeHTML(tool))
-                .trim(); 
-
-                showOutput(html, stripTags(html)); 
+// Función para generar la pregunta para la AI
+function generateAIQuestion(topic, project, tool) {
+    if (!topic || !project || !tool) {
+        alert('Por favor completa todos los campos');
+        return;
     }
-
-    function hideOutput() { 
-        document.getElementById("generatedQuestion").innerHTML = html; 
-        document.getElementById("copyArea").value = Text; 
-        document.getElementById("output").classList.remove('hidden');
+    
+    const questionTemplates = {
+        'concept': `What is the core concept behind building a ${project} with ${tool}?`,
+        'structure': `How should I structure and organize a ${project} built with ${tool}?`,
+        'details': `Why do certain implementation details matter when building a ${project} with ${tool}?`,
+        'technique': `What are the step-by-step techniques for implementing a ${project} with ${tool}?`
+    };
+    
+    const question = questionTemplates[topic];
+    
+    // Mostrar la pregunta en el span de output
+    const outputSpan = document.getElementById('outputSpan');
+    if (outputSpan) {
+        outputSpan.textContent = question;
     }
+    
+    console.log('Pregunta generada:', question);
+}
