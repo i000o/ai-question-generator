@@ -2,6 +2,19 @@
 
 > A smart tool that helps you craft the perfect questions for AI assistance based on your specific needs and project context.
 
+> Table of Contents
+
+## Table of contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Getting started](#-getting-started)
+- [How to Use](#how-to-use)
+- [Design Philosophy](#design-philosophy)
+- [Project Structure](#-project-structure)
+- [Authors](#authors)
+
 ## 🚀 Overview
 
 The AI Question Generator is an interactive web application that guides users through a structured process to create effective prompts for AI assistants. Instead of struggling with vague questions, users can specify their needs and get tailored questions that yield better AI responses.
@@ -91,10 +104,10 @@ npm run preview
 
 Select what kind of help you need:
 
-- **Concept**: "What is this?"
-- **Structure**: "How is this organized?"
-- **Details**: "Why does this work?"
-- **Technique**: "How do I implement this?"
+- **Concept**: "What are the key principles behind this idea?"
+- **Structure**: "How can I plan this project's code?"
+- **Details**: "Which key implications do I need to consider?"
+- **Technique**: "How do I implement this practically?"
 
 ### Step 2: Specify Your Project
 
@@ -135,7 +148,7 @@ Select what kind of help you need:
 ├── 📁 styles/
 │   └── 📄 index.css           # Tailwind CSS imports
 ├── 📄 README.md               # This file
-├── 📄 hello.md                # notes about what i did 
+├── 📄 hello.md                # notes about what i did
 ├── 📄 vite.md                 # vite guide
 └── 📄 project-analysis.md # Detailed project metrics
 ```
@@ -144,4 +157,3 @@ Select what kind of help you need:
 
 - **Iman Osman** - _Original Creator_ - [GitHub Profile](https://github.com/iman-osman)
 - **Ariel** - _Contributor_ - Vite integration, Tailwind migration, and enhancements - [GitHub Profile](https://github.com/Ariel-GonzAguer)
-
