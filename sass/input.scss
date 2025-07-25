@@ -1,0 +1,103 @@
+@use 'reset'; 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+// GLOBAL 
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+// END OF GLOBAL 
+
+body { 
+    font-family: 'inter', sans-serif; 
+    background-color: #ffffff;
+    color: black; 
+    font-size: 0.8em; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100svh; 
+    text-align: center;
+    width: 100%; 
+}
+
+form { 
+    margin: 30px; 
+}
+
+h1, h2, h3, h4 { 
+    font-weight: 500; 
+    font-size: 1.5em;
+    text-align: left;
+    color: rgb(92, 92, 92); 
+    letter-spacing: 3%;
+}
+
+section { 
+    margin: 70px 0; 
+}
+
+fieldset { 
+    border: none; 
+    height: 100px; 
+    padding: 0; // makes all heading right margins aligned 
+    margin: 0; // makes all heading right margins aligned 
+}
+
+.step-1 label, .feedback label { 
+    // border-radius: 200%; 
+    padding: 20px; 
+    margin: 20px; 
+    font-size: 1em;
+    letter-spacing: 10%;
+}
+
+.step-2 h2 { 
+    margin-bottom: 40px; 
+}
+
+.step-2 label { 
+    letter-spacing: 3%;
+}
+
+legend { 
+    text-align: left; 
+    // all: unset; 
+}
+
+fieldset label { 
+    // margin-top: 50px; 
+    display: inline-block;
+    transform: scale(1);
+    transition: transform 0.2s ease-in-out; 
+}
+
+fieldset label:hover {
+  transform: scale(1.1);
+}
+
+select.project, 
+select.tool  { 
+    padding: 10px 15px;
+    border-radius: 12px; 
+    border: none; 
+    background-color: #c6c6c6;
+    letter-spacing: 3%;
+    color: inherit; 
+}
+
+.feedback { 
+    margin-bottom: 80px; 
+}
+
+footer { 
+    position: fixed;
+    bottom: 20px; 
+}
