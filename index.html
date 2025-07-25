@@ -1,189 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- displays site properly based on user's device -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script rel="script" src="js/script.js"></script>
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
+  <link rel="stylesheet" href="sass/output.css"> 
+  <title>AI Question Generator</title>
+</head>
 
-    <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
-    <link rel="stylesheet" href="styles/index.css" />
-    <title>AI Question Generator</title>
-  </head>
-
-  <body>
-    <!-- added a main element for semantic structure -->
-    <main class="container mx-auto p-4">
-      <form id="form" class="shadow-2xl mx-auto max-w-4xl p-8 mt-8">
+<body> 
+    <form class="form">
+        <section class="step-1"> 
         <fieldset class="step-1">
-          <legend class="text-right">
-            <h1 class="w-auto text-3xl font-bold mb-6">
-              What do you need your AI's help with?
-            </h1>
-          </legend>
-          <p class="text-xl mb-4">Choose one for now.</p>
-          <section class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <label
-              class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all duration-200"
-            >
-              <input
-                id="concept"
-                value="concept"
-                type="radio"
-                name="topic"
-                required
-                class="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
-              />
-              <span class="ml-3 text-lg font-semibold">Concept</span>
+            <legend>
+                <h1> 
+                    What do you need your AI's help with? Choose one for now.
+                </h1>
+            </legend>
+            <label class="step-1">
+                <input type="radio" name="concept" required class="topic">Concept <!-- clickable buttons, change to inputs at some point-->
             </label>
-            <span class="concept-summary text-sm text-gray-600"></span>
-
-            <label
-              class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all duration-200"
-            >
-              <input
-                id="structure"
-                value="structure"
-                type="radio"
-                name="topic"
-                required
-                class="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
-              />
-              <span class="ml-3 text-lg font-semibold">Structure</span>
+            <span class="concept-summary"></span> <!-- summary shows of what we mean by a conceptual question - using What? framing -->
+            <label class="step-1">
+                <input type="radio" name="structure" required class="topic">Structure
             </label>
-            <span class="structure-summary text-sm text-gray-600"></span>
-
-            <label
-              class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all duration-200"
-            >
-              <input
-                id="details"
-                value="details"
-                type="radio"
-                name="topic"
-                required
-                class="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
-              />
-              <span class="ml-3 text-lg font-semibold">Details</span>
+            <span class="structure-summary"></span> <!-- summary shows of what we mean by a structure question - using How? framing -->
+            <label class="step-1">
+                <input type="radio" name="details" required class="topic">Details
             </label>
-            <span class="details-summary text-sm text-gray-600"></span>
-
-            <label
-              class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 cursor-pointer transition-all duration-200"
-            >
-              <input
-                id="technique"
-                value="technique"
-                type="radio"
-                name="topic"
-                required
-                class="w-5 h-5 text-blue-600 border-2 border-gray-300 focus:ring-blue-500 focus:ring-2"
-              />
-              <span class="ml-3 text-lg font-semibold">Technique</span>
+            <span class="details-summary"></span> <!-- summary shows of what we mean by a details question - using Why? framing -->
+            <label class="step-1"> 
+                <input type="radio" name="technique" required class="topic">Technique
             </label>
-            <span class="technique-summary text-sm text-gray-600"></span>
-          </section>
+            <span class="technique-summary"></span> <!-- summary shows of what we mean by a technique question. pragmatic steps -->
         </fieldset>
+        </section>
 
         <section class="step-2">
-          <h2 class="text-xl mb-4">What is the nature of your project?</h2>
-          <label for="project" class="text-lg"
-            >I want to build a
-            <select
-              id="project"
-              name="project"
-              required
-              class="border-2 border-slate-800 rounded"
-            >
-              <option value="tip-calculator" id="tip-calculator">
-                tip calculator
-              </option>
-              <option value="landing-page" id="landing-page">
-                landing page
-              </option>
-              <option value="rating component" id="rating-component">
-                rating component
-              </option>
-              <option value="sign-up-form" id="sign-up-form">
-                sign up form
-              </option>
-            </select>
-          </label>
-          <label for="tool" class="text-lg"
-            >with
-            <select
-              id="tool"
-              name="tool"
-              required
-              class="border-2 border-slate-800 rounded"
-            >
-              <option value="javascript">JavaScript</option>
-              <option value="kotlin">Kotlin</option>
-              <option value="python">Python</option>
-              <option value="react.js">React.js</option>
-              <option value="node.js">Next.js</option>
-            </select>
-          </label>
+            <h2>What is the nature of your project?</h2>
+            <label for="project">I want to build a
+                <select id="project" class="project">
+                <option value="tip-calculator">tip calculator</option>
+                <option value="landing-page">landing page</option>
+                <option value="rating component">rating component</option>
+                <option value="sign-up-form">sign up form</option>
+                </select>
+            </label>
+            <label for="tool">with
+                <select id="tool" class="tool">
+                <option value="javascript">JavaScript</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="python">Python</option>
+                <option value="react.js">React.js</option>
+                <option value="node.js">Next.js</option>
+                </select>
+            </label>
         </section>
 
-        <section class="flex justify-center mt-6">
-          <button
-            type="submit"
-            class="cursor-pointer bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200"
-          >
-            Generate AI Question
-          </button>
+        <section class="question-output"> 
+            <h3>Try this:</h3>
+            <span></span> <!-- Produces a question for AI assist based on info provided -->
         </section>
 
-        <section class="flex flex-col items-center mt-8">
-          <h3>Try this:</h3>
-          <span
-            id="outputSpan"
-            class="text-lg text-center w-auto border-2 border-slate-800 rounded p-2 bg-slate-800 text-amber-400"
-          ></span>
-          <!-- Produces a question for AI assist based on info provided -->
+        <section class="feedback"> 
+            <fieldset class="feedback"> 
+                <legend>
+                    <h4> 
+                        Did that help?
+                    </h4>
+                </legend>
+                <label>
+                    <input type="radio" value="yes" name="yes">Yes
+                </label>
+                <label>
+                    <input type="radio" value="no" name="no">No
+                </label>
+            </fieldset>
+            <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
+            <!-- need arrow images - design in AI, literally a line -->
         </section>
-      </form>
-      <section class="feedback">
-        <fieldset class="feedback">
-          <legend class="text-lg">
-            <h4>Did that help?</h4>
-          </legend>
-          <label class="flex items-center">
-            <input
-              type="radio"
-              value="yes"
-              id="yes"
-              name="feedback"
-              class="h-5 w-5 text-lg"
-              required
-            />
-            <span class="ml-2">Yes</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              type="radio"
-              value="no"
-              id="no"
-              name="feedback"
-              class="h-5 w-5 text-lg"
-              required
-            />
-            <span class="ml-2">No</span>
-          </label>
-        </fieldset>
-        <!-- <h4>Did that help?</h4> leads to flow Y/N and repeat. -->
-        <!-- need arrow images - design in AI, literally a line -->
-      </section>
-    </main>
+    </form>
 
-    <footer
-      class="relative bottom-0 w-full text-center bg-gray-800 text-white p-1 flex justify-between"
-    >
-      <p>Designed and Engineered by Iman Osman.</p>
-      <p>2025 &copy; Iman Osman</p>
+    <footer>
+        <p> Designed and Engineered by Iman Osman.</p>
+        <p>2025 &copy; Iman Osman </p>
     </footer>
-
-    <!-- Script al final del body para que el DOM esté listo -->
-    <script src="js/script.js"></script>
-  </body>
-</html>
+</body>
