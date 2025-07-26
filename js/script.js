@@ -1,12 +1,6 @@
-// this is just to test the script is being executed - you can remove this
-console.log('Script iniciando...');
-
 // Variable declaration
-const form = document.getElementById('form');
+const form = document.querySelector('.form');
 const radioButtons = document.querySelectorAll('input[name="topic"]');
-
-// just to check the number of radio buttons found - you can remove this
-console.log('Encontrados ' + radioButtons.length + ' radio buttons');
 
 // radio buttons event setup
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
@@ -54,7 +48,7 @@ function updateTopicSummary(topic) {
 // function to get the selected topic from radio buttons
 function getSelectedTopic() {
     const selectedTopic = document.querySelector('input[name="topic"]:checked');
-    // If a topic is selected, return its value, therwise, return null
+    // If a topic is selected, return its value, otherwise, return null
     // you can also use an if statement to check if selectedTopic is null
     // and return null if it is, but this is a more concise way
     return selectedTopic ? selectedTopic.value : null;
@@ -105,7 +99,7 @@ if (form) {
 function generateAIQuestion(topic, project, tool) {
     if (!topic || !project || !tool) {
         // If any of the fields are empty, show an alert
-        alert('Por favor completa todos los campos');
+        alert('Por favor completa todos los campos'); // English translation? 
         return;
     }
 

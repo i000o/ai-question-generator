@@ -2,8 +2,6 @@
 
 > A smart tool that helps you craft the perfect questions for AI assistance based on your specific needs and project context.
 
-> Table of Contents
-
 ## Table of contents
 
 - [Overview](#overview)

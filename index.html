@@ -77,20 +77,38 @@
             <section class="step-2">
                 <h2>What is the nature of your project?</h2>
                 <label for="project">I want to build a
-                    <select id="project" class="project">
-                    <option value="tip-calculator">tip calculator</option>
-                    <option value="landing-page">landing page</option>
-                    <option value="rating component">rating component</option>
-                    <option value="sign-up-form">sign up form</option>
+                    <select 
+                    id="project" 
+                    name="project"
+                    required
+                    class="project"
+                    > <!-- can class be the same as name or no?-->
+                        <option value="tip-calculator" id="tip-calculator">
+                            tip calculator
+                        </option>
+                        <option value="landing-page" id="landing-page">
+                            landing page
+                        </option>
+                        <option value="rating component" id="rating-component">
+                            rating component
+                        </option>
+                        <option value="sign-up-form" id="sign-up-form">
+                            sign up form
+                        </option>
                     </select>
                 </label>
                 <label for="tool">with
-                    <select id="tool" class="tool">
-                    <option value="javascript">JavaScript</option>
-                    <option value="kotlin">Kotlin</option>
-                    <option value="python">Python</option>
-                    <option value="react.js">React.js</option>
-                    <option value="node.js">Next.js</option>
+                    <select 
+                    id="tool" 
+                    name="tool"
+                    class="tool"
+                    required
+                    >
+                        <option value="javascript">JavaScript</option>
+                        <option value="kotlin">Kotlin</option>
+                        <option value="python">Python</option>
+                        <option value="react.js">React.js</option>
+                        <option value="node.js">Next.js</option>
                     </select>
                 </label>
             </section>
