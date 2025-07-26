@@ -1,13 +1,15 @@
+// Do I need DOMLoaded here? 
+
 // Variable declaration
-const form = document.querySelector('.form');
-const radioButtons = document.querySelectorAll('input[name="topic"]');
+const form = document.getElementById('.form');
+const radioButtons = document.querySelectorAll('input[name="topic"]'); // Array
 
 // radio buttons event setup
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-radioButtons.forEach((radio) => {
-    radio.onchange = function () {
-        console.log('Radio seleccionado:', this.value);
-        updateTopicSummary(this.value);
+radioButtons.forEach((radio) => { //radioButtons is an Array. This executes a function per element 
+    radio.onchange = function () { // take the radio element (each index in the array), .onchange() checks for when user chooses something and 'finalises' their choice by clicking away [focus state], run this function 
+        console.log('Radio selected:', this.value); // `this` being the object that invoked the function - radio 
+        updateTopicSummary(this.value); // this function is declared on line 16
     };
 });
 
@@ -15,7 +17,7 @@ radioButtons.forEach((radio) => {
 // this function updates the summary based on the selected topic
 function updateTopicSummary(topic) {
 
-    // clean all summaries
+    // clear all summaries
     document.querySelectorAll('.concept-summary, .structure-summary, .details-summary, .technique-summary').forEach(span => {
         span.textContent = '';
     });
@@ -30,17 +32,17 @@ function updateTopicSummary(topic) {
 
     // Check if the topic exists in the summaryMap
     // and update the corresponding summary element
-    if (summaryMap[topic]) {
+    if (summaryMap[topic]) { // accesses a value inside the property/value pairs within the summaryMap Object
         const summaryElement = document.querySelector(`.${topic}-summary`);
 
         // If the element exists
         if (summaryElement) {
             // update its text content
             summaryElement.textContent = summaryMap[topic];
-            console.log('Resumen actualizado correctamente');
+            console.log('Summary updated successfully');
         } else {
             // If the element does not exist, log an error
-            console.error('No se encontró elemento:', topic + '-summary');
+            console.error('Element not found:', topic + '-summary');
         }
     }
 }
@@ -66,8 +68,8 @@ function getSelectedProject() {
 function getSelectedTool() {
     const toolSelect = document.getElementById('tool');
     // If a tool is selected, return its value, otherwise, return an empty string
-    // you can also use an if statement to check if toolSelect is null
-    return toolSelect ? toolSelect.value : '';
+    // you can also use an if/else statement to check if toolSelect is null
+    return toolSelect ? toolSelect.value : ''; // ternary operator 
 }
 
 // event listener for form submission
@@ -82,7 +84,7 @@ if (form) {
         const selectedTool = getSelectedTool();
 
         // Log the selected values to the console - you can remove this
-        console.log('Datos del formulario:', {
+        console.log('Form data:', {
             topic: selectedTopic,
             project: selectedProject,
             tool: selectedTool
@@ -99,14 +101,14 @@ if (form) {
 function generateAIQuestion(topic, project, tool) {
     if (!topic || !project || !tool) {
         // If any of the fields are empty, show an alert
-        alert('Por favor completa todos los campos'); // English translation? 
+        alert('Please complete all the fields'); // Better prompt for UX? 
         return;
     }
 
     const questionTemplates = {
         'concept': `What is the core concept behind building a ${project} with ${tool}?`,
         'structure': `How should I structure and organize a ${project} built with ${tool}?`,
-        'details': `Why do certain implementation details matter when building a ${project} with ${tool}?`,
+        'details': `Why do certain implementation details matter when building a ${project} with ${tool}?`, // change this q 
         'technique': `What are the step-by-step techniques for implementing a ${project} with ${tool}?`
     };
 
@@ -121,5 +123,5 @@ function generateAIQuestion(topic, project, tool) {
     }
 
     // Log the generated question to the console - you can remove this
-    console.log('Pregunta generada:', question);
+    console.log('Generated question:', question);
 }
