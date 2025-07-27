@@ -1,13 +1,17 @@
-// Do I need DOMLoaded here? 
+document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't found before 
+
+console.log('Script is running!'); 
 
 // Variable declaration
-const form = document.getElementById('.form');
-const radioButtons = document.querySelectorAll('input[name="topic"]'); // Array
+const form = document.getElementById('form');
+const radioButtons = document.querySelectorAll('input[name="topic"]'); // Object 
+// just to check the number of radio buttons found - you can remove this
+console.log('Found ' + radioButtons.length + ' radio buttons');
 
 // radio buttons event setup
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-radioButtons.forEach((radio) => { //radioButtons is an Array. This executes a function per element 
-    radio.onchange = function () { // take the radio element (each index in the array), .onchange() checks for when user chooses something and 'finalises' their choice by clicking away [focus state], run this function 
+radioButtons.forEach((radio) => { // This executes a function per element 
+    radio.onchange = function () { // take the radio element (each element in the object), .onchange() checks for when user chooses something and 'finalises' their choice by clicking away [focus state], run this function 
         console.log('Radio selected:', this.value); // `this` being the object that invoked the function - radio 
         updateTopicSummary(this.value); // this function is declared on line 16
     };
@@ -125,3 +129,6 @@ function generateAIQuestion(topic, project, tool) {
     // Log the generated question to the console - you can remove this
     console.log('Generated question:', question);
 }
+});
+
+
