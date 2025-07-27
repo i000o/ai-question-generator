@@ -1,57 +1,134 @@
-document.addEventListener("DOMContentLoaded", init); 
-    
-    // declare variables 
-    function init() { 
-        const form = document.querySelector(".form"); 
-        const controls = form.querySelectorAll('input', 'select');
+document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't found before 
 
-        controls.forEach(el => el.addEventListener('change', tryGenerate)); //
+    console.log('Script is running!'); 
+
+    // Variable declaration
+    const form = document.getElementById('form');
+    const radioButtons = document.querySelectorAll('input[name="topic"]'); // Object 
+
+    console.log('Found ' + radioButtons.length + ' radio buttons');
+
+    // radio buttons event setup
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+    radioButtons.forEach((radio) => { // This executes a function per element 
+        radio.onchange = function () { // take the radio element (each element in the object), .onchange() checks for when user chooses something and 'finalises' their choice by clicking away [focus state], run this function 
+            console.log('Radio selected:', this.value); // `this` being the object that invoked the function - radio 
+            updateTopicSummary(this.value); // this function is declared on line 16
+        };
+    });
+
+
+    // this function updates the summary based on the selected topic
+    function updateTopicSummary(topic) {
+
+        // clear all summaries
+        document.querySelectorAll('.concept-summary, .structure-summary, .details-summary, .technique-summary').forEach(span => {
+            span.textContent = '';
+        });
+
+        // show the corresponding summary
+        const summaryMap = {
+            'concept': 'What is this? Understanding the fundamental idea or principle.',
+            'structure': 'How is this organized? Understanding the architecture and components.',
+            'details': 'Why does this work? Understanding the specific implementation.',
+            'technique': 'How do I implement this? Step-by-step practical approach.'
+        };
+
+        // Check if the topic exists in the summaryMap
+        // and update the corresponding summary element
+        if (summaryMap[topic]) { // accesses a value inside the property/value pairs within the summaryMap Object
+            const summaryElement = document.querySelector(`.${topic}-summary`);
+
+            // If the element exists
+            if (summaryElement) {
+                // update its text content
+                summaryElement.textContent = summaryMap[topic];
+                console.log('Summary updated successfully');
+            } else {
+                // If the element does not exist, log an error
+                console.error('Element not found:', topic + '-summary');
+            }
+        }
     }
 
-    function tryGenerate() { 
-        const form = document.querySelector(".form"); 
+    // function to get the selected topic from radio buttons
+    function getSelectedTopic() {
+        const selectedTopic = document.querySelector('input[name="topic"]:checked');
+        // If a topic is selected, return its value, otherwise, return null
+        // you can also use an if statement to check if selectedTopic is null
+        // and return null if it is, but this is a more concise way
+        return selectedTopic ? selectedTopic.value : null;
+    }
 
-        if (!form.checkValidity()) { //What's .checkValidity doing here? 
-            hideOutput(); // What's this? 
-            return; // Why is 'return' blank? 
+    // function to get the selected project from the dropdown
+    function getSelectedProject() {
+        const projectSelect = document.getElementById('project');
+        // If a project is selected, return its value, otherwise, return an empty string
+        // you can also use an if statement to check if projectSelect is null
+        return projectSelect ? projectSelect.value : '';
+    }
+
+    // function to get the selected tool from the dropdown
+    function getSelectedTool() {
+        const toolSelect = document.getElementById('tool');
+        // If a tool is selected, return its value, otherwise, return an empty string
+        // you can also use an if/else statement to check if toolSelect is null
+        return toolSelect ? toolSelect.value : ''; // ternary operator 
+    }
+
+    // event listener for form submission
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            // this will prevent the default form submission
+            e.preventDefault();
+
+            // get the selected values from the form using the helper functions from above
+            const selectedTopic = getSelectedTopic();
+            const selectedProject = getSelectedProject();
+            const selectedTool = getSelectedTool();
+
+            // Log the selected values to the console - you can remove this
+            console.log('Form data:', {
+                topic: selectedTopic,
+                project: selectedProject,
+                tool: selectedTool
+            });
+
+            // Call the function to generate the question
+            // and pass the selected values
+            // because the functions have global scope we can use it here 
+            generateAIQuestion(selectedTopic, selectedProject, selectedTool);
+        });
+    }
+
+    // function to generate the AI question based on the selected topic, project, and tool
+    function generateAIQuestion(topic, project, tool) {
+        if (!topic || !project || !tool) {
+            // If any of the fields are empty, show an alert
+            alert('Please complete all the fields'); // Better prompt for UX? 
+            return;
         }
 
-        generateQuestion(); // Why can we use this function before we've declared/assigned it? 
-    }
+        const questionTemplates = {
+            'concept': `What is the core concept behind building a ${project} with ${tool}?`,
+            'structure': `How should I structure and organize a ${project} built with ${tool}?`,
+            'details': `Why do certain implementation details matter when building a ${project} with ${tool}?`, // change this q 
+            'technique': `What are the step-by-step techniques for implementing a ${project} with ${tool}?`
+        };
 
-    // Why do we come out now? 
+        // Get the question template based on the selected topic
+        const question = questionTemplates[topic];
 
-    function generateQuestion() { 
-        const formData = new formData(document.querySelector(".form")); // What's "new" doing here? 
-        const topic = formData.get('.topic'); // What's .get() method? 
-        const project = formData.get('.project');
-        const tool = formData.get('.tool'); 
-        const TEMPLATES = { // Why caps? 
-            Concept: `
-            Please explain the key concepts and principles to consider to approach building a <span class="highlight">_project_<span> with <span class="highlight">_tool_</span>. 
-            Do not show any code yet. I only want to understand the most crucial things to consider when approaching a task like this.
-            ` // What is <span class="highlight">_project_</span>?
-            Structure: `
-            Structurally, how would I approach planning my code for a project like this? Break it down step by step in chronological order,according to best practice. I want to understand what steps I need to include in my <span class="highlight">_tool_</span>, in which order should they come so that I can break the task down piece by piece.
-            ` // We can edit the wording of these questions to improve 
-            Details: `
-            Are there any key details that I need to consider in a project like this? Ensure I am not overlooking any best practices in relation to accessibility or otherwise. Consider what kind of specifications might make my tip calculator unique or future-oriented? What are some common features a strong, scalable calculator might have?
-            ` 
-            Technique: `
-            Considering all of the above, walk me through, step by step, the pragmatic things I would need to implement from start to finish to write this tip calculator. Talk me through the programming logic it would require to work. Consider how to keep my code clean. What do I need to make sure I complete to have a well-functioning <span class="highlight">_project_</span> by the end?
-            `
+        const outputSpan = document.getElementById('outputSpan');
+        // If the outputSpan element exists
+        if (outputSpan) {
+            // update its text content
+            outputSpan.textContent = question;
         }
 
-            const html = template 
-                .replace(/--project--/g, escapeHTML(project)) 
-                .replace(/--tool--/g, escapeHTML(tool))
-                .trim(); 
-
-                showOutput(html, stripTags(html)); 
+        // Log the generated question to the console - you can remove this
+        console.log('Generated question:', question);
     }
+});
 
-    function hideOutput() { 
-        document.getElementById("generatedQuestion").innerHTML = html; 
-        document.getElementById("copyArea").value = Text; 
-        document.getElementById("output").classList.remove('hidden');
-    }
+
