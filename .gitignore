@@ -31,3 +31,9 @@ serviceAccountKey.json
 .env
 .vercel
 *serviceAccountKey*
+
+# Iman resources 
+ariel-index.html
+ariel-js.js
+iman-learnings.node_modules
+pr-review.md
