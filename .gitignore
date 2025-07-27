@@ -35,5 +35,6 @@ serviceAccountKey.json
 # Iman resources 
 ariel-index.html
 ariel-js.js
-iman-learnings.node_modules
+iman-learnings.md
 pr-review.md
+hola.md
