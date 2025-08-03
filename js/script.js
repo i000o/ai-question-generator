@@ -3,11 +3,12 @@ document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't fou
     console.log('Script is running!');
 
     // Variable declaration
-    const feedbackForm = document.getElementById('feedback-form');
+    const feedbackSection = document.getElementById('feedback');
     const radioButtons = document.querySelectorAll('input[name="topic"]');
     let topicSelected = null; // Initialize topicSelected variable
     const projectSelect = document.getElementById('project');
     const toolSelect = document.getElementById('tool');
+    const outputP = document.getElementById('outputP');
 
     // radio buttons event setup → step-1
     radioButtons.forEach((radio) => {
@@ -56,10 +57,14 @@ document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't fou
             'technique': `What are the step-by-step techniques for implementing a ${projectSelect} with ${toolSelect}?`
         };
         const question = questionTemplates[topicSelected];
-        const outputP = document.getElementById('outputP');
         if (outputP) {
             outputP.textContent = question;
+            if (outputP.textContent) {
+                feedbackSection.style.display = 'block'; // Show feedback section
+            }
         }
         console.log('Generated question:', question);
+        return true; // Return true to indicate the question was generated successfully
     };
+
 });
