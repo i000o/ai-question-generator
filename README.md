@@ -157,4 +157,4 @@ Select what kind of help you need:
 ## 👥 Authors
 
 - **Iman Osman** - _Original Creator_ - [GitHub Profile](https://github.com/iman-osman)
-- **Ariel** - _Contributor_ - Vite integration, JS logic - [GitHub Profile](https://github.com/Ariel-GonzAguer)
+- **Ariel** - _Contributor_ - Vite integration, JavaScript logic, Testing - [GitHub Profile](https://github.com/Ariel-GonzAguer)

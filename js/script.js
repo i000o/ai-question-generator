@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't fou
     const toolSelect = document.getElementById('tool');
     const outputP = document.getElementById('outputP');
 
-    // radio buttons event setup → step-1
+    // radio buttons event setup 
     radioButtons.forEach((radio) => {
         radio.onchange = function () {
             console.log('Radio selected:', this.value); // you can remove this if you want
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't fou
                     radio.checked = true;
                     // https://developer.mozilla.org/es/docs/Web/API/EventTarget/dispatchEvent
                     radio.dispatchEvent(new Event('change', { bubbles: true }));
+                    // define topic → step-1
                     topicSelected = radio.value; // Update the topicSelected variable
                 });
             }

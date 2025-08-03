@@ -4,6 +4,15 @@ describe('AI Question Generator Script', () => {
   let feedbackSection, outputP, projectSelect, toolSelect, radioConcept, radioStructure, detailsConcept, summaryConcept;
 
   // Helper to simulate DOMContentLoaded and script logic
+  /**
+   * Initializes event listeners and logic for topic selection, project/tool selection,
+   * and AI question generation in the UI. Handles radio button changes, details/summary
+   * clicks, and triggers question generation when appropriate selections are made.
+   *
+   * @returns {Object} An object exposing:
+   *   - generateAIQuestion: (async function) Generates an AI question based on current selections.
+   *   - setTopic: (function) Allows manual setting of the selected topic.
+   */
   function loadScript() {
     // Simulate the script logic
     const radioButtons = document.querySelectorAll('input[name="topic"]');
