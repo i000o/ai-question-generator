@@ -1,17 +1,16 @@
-# Hola.
+# Hola 2
 
-For this first contribution, I did the following:
+## For this first contribution, I did the following:
 
-- Actualicé mi fork para estar al día con su repositorio
-- Responder a sus comentarios en en el html y js
-- Eliminar cosas innecesarias que yo había puesto en el html, para un código más eficiente
-- Trabajar en js para intentar la validación en línea
-- Cambié las clases por id, por un tema de poder trabajar con esto más adelante de ser necesario, pero se pueden quitar los id que no se están usando actualmente en el js
+- Updated my fork to keep up with your repository
+- Responded to your comments in the HTML and JS
+- Removed unnecessary things I had added to the HTML for more efficient code
+- Worked on JS to address inline validation
+- Changed classes to IDs so I could work with them later if needed, but IDs that aren't currently being used can be removed from the JS
 
+## Important Changes
 
-## Cambios importante
-
-- Cambié los span por details en los input radio [Concept, Structure, Details, Technique] en el html, así se reduje el uso de js y se hace más accesible y semántico todo. Esto implica tener que acomodar la lista de inputs en otro orden o trabajar en su estilado para que no haya problemas.
-- En el js tuve que agregar varios disparadores de eventos sintéticos, primero para poder obtener la validación/output en línea, y segundo para que cada vez que se abre/cierra un details se tome un valor, ya que el estilado actual elimina el círculo de selección que tiene nativamente cada input radio, lo que hace imposible para la persona usuaria elegir un valor, lo que hace que el js no pueda funcionar. Esto de que los input radio no tengan una forma clara de seleccionarse es una mala práctica. Deben poderse seleccionar fácil y claramente
-- En el html agregué una opción más a los select, para lograr que la persona usuaria tenga que seleccionar una opción, y así poder tomar un valor para lo de la validación/output en línea
-- reduje el scope del form que define el output. Los forms son para tomar información, no mostrarla. La pregunta de que si fue útil el output debe ser otro formulario, que también lo agregué 
+- Changed spans to details in the radio inputs [Concept, Structure, Details, Technique] in the HTML, reducing the use of JS and making everything more accessible and semantic. This means having to arrange the input list in a different order or work on its styling to avoid issues.
+- In the JS, I had to add several synthetic event triggers. First, to be able to obtain inline validation/output, and second, so that a value is entered every time a details page is opened/closed. The current style eliminates the selection circle that each radio input has natively, making it impossible for the user to select a value, rendering the JS inoperable. The fact that radio inputs don't have a clear way to select them is bad practice. They should be easy and clear to select.
+- In the HTML, I added an additional option to the select fields so that the user has to select an option and can enter a value for inline validation/output.
+- I reduced the scope of the form that defines the output. Forms are for collecting information, not displaying it. The question of whether the output was useful should be another form, which I also added.

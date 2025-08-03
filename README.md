@@ -124,7 +124,8 @@ Select what kind of help you need:
 
 ### User-Centric Approach
 
-- **Guided Experience**: Step-by-step process eliminates confusion
+
+- **Guided Experience**: Step-by-step process eliminates confusion <!-- Because the inline output, I dont thik this apply anymore -->
 - **Context Awareness**: Questions adapt to your specific situation
 - **Immediate Feedback**: Real-time updates keep users engaged
 
@@ -134,7 +135,7 @@ Select what kind of help you need:
 - **Modern Tooling**: Vite for fast development and optimized builds
 - **Maintainable Code**: Clean, well-commented, and organized structure
 
-## 📁 Project Structure
+## 📁 Project Structure <!-- This will need an update-->
 
 ```
 📁 ai-question-generator/
@@ -156,4 +157,4 @@ Select what kind of help you need:
 ## 👥 Authors
 
 - **Iman Osman** - _Original Creator_ - [GitHub Profile](https://github.com/iman-osman)
-- **Ariel** - _Contributor_ - Vite integration, Tailwind migration, and enhancements - [GitHub Profile](https://github.com/Ariel-GonzAguer)
+- **Ariel** - _Contributor_ - Vite integration, JS logic - [GitHub Profile](https://github.com/Ariel-GonzAguer)
