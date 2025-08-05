@@ -13,8 +13,6 @@
 - [Project Structure](#-project-structure)
 - [Authors](#authors)
 
-test
-
 ## 🚀 Overview
 
 The AI Question Generator is an interactive web application that guides users through a structured process to create effective prompts for AI assistants. Instead of struggling with vague questions, users can specify their needs and get tailored questions that yield better AI responses.
