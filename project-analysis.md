@@ -86,9 +86,9 @@
 
 ## 🛠️ Technologies Used
 
-- **Frontend:** HTML5, CSS3, Vanilla JavaScript, Vite, npm, git, Tailwind CSS
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript, Vite, Tailwind CSS
 - **CSS Preprocessor:** None
 - **Version Control:** Git
-- **Documentation:** README.md, contribution.md, project-analysis.md, vite.md
+- **Documentation:** README.md, project-analysis.md, vite.md
 
 ---

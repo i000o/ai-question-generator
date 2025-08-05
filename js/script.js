@@ -1,134 +1,71 @@
-document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't found before 
+document.addEventListener("DOMContentLoaded", () => { //radioButtons weren't found before / I dont know why they were not found, but in this momement is worinkg
 
-    console.log('Script is running!'); 
+    console.log('Script is running!');
 
     // Variable declaration
-    const form = document.getElementById('form');
-    const radioButtons = document.querySelectorAll('input[name="topic"]'); // Object 
+    const feedbackSection = document.getElementById('feedback');
+    const radioButtons = document.querySelectorAll('input[name="topic"]');
+    let topicSelected = null; // Initialize topicSelected variable
+    const projectSelect = document.getElementById('project');
+    const toolSelect = document.getElementById('tool');
+    const outputP = document.getElementById('outputP');
 
-    console.log('Found ' + radioButtons.length + ' radio buttons');
-
-    // radio buttons event setup
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-    radioButtons.forEach((radio) => { // This executes a function per element 
-        radio.onchange = function () { // take the radio element (each element in the object), .onchange() checks for when user chooses something and 'finalises' their choice by clicking away [focus state], run this function 
-            console.log('Radio selected:', this.value); // `this` being the object that invoked the function - radio 
-            updateTopicSummary(this.value); // this function is declared on line 16
-        };
-    });
-
-
-    // this function updates the summary based on the selected topic
-    function updateTopicSummary(topic) {
-
-        // clear all summaries
-        document.querySelectorAll('.concept-summary, .structure-summary, .details-summary, .technique-summary').forEach(span => {
-            span.textContent = '';
-        });
-
-        // show the corresponding summary
-        const summaryMap = {
-            'concept': 'What is this? Understanding the fundamental idea or principle.',
-            'structure': 'How is this organized? Understanding the architecture and components.',
-            'details': 'Why does this work? Understanding the specific implementation.',
-            'technique': 'How do I implement this? Step-by-step practical approach.'
+    // radio buttons event setup 
+    radioButtons.forEach((radio) => {
+        radio.onchange = function () {
+            console.log('Radio selected:', this.value); // you can remove this if you want
         };
 
-        // Check if the topic exists in the summaryMap
-        // and update the corresponding summary element
-        if (summaryMap[topic]) { // accesses a value inside the property/value pairs within the summaryMap Object
-            const summaryElement = document.querySelector(`.${topic}-summary`);
-
-            // If the element exists
-            if (summaryElement) {
-                // update its text content
-                summaryElement.textContent = summaryMap[topic];
-                console.log('Summary updated successfully');
-            } else {
-                // If the element does not exist, log an error
-                console.error('Element not found:', topic + '-summary');
+        // select the radio button when details are opened/closed
+        const details = document.getElementById(radio.id + '-details');
+        if (details) {
+            const summary = details.querySelector('summary');
+            if (summary) {
+                summary.addEventListener('click', function () {
+                    radio.checked = true;
+                    // https://developer.mozilla.org/es/docs/Web/API/EventTarget/dispatchEvent
+                    radio.dispatchEvent(new Event('change', { bubbles: true }));
+                    // define topic → step-1
+                    topicSelected = radio.value; // Update the topicSelected variable
+                });
             }
         }
-    }
+    });
 
-    // function to get the selected topic from radio buttons
-    function getSelectedTopic() {
-        const selectedTopic = document.querySelector('input[name="topic"]:checked');
-        // If a topic is selected, return its value, otherwise, return null
-        // you can also use an if statement to check if selectedTopic is null
-        // and return null if it is, but this is a more concise way
-        return selectedTopic ? selectedTopic.value : null;
-    }
+    // project select event setup → step-2.1
+    projectSelect.addEventListener('click', function () {
+        projectSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        console.log('Project selected:', this.value);
+    });
 
-    // function to get the selected project from the dropdown
-    function getSelectedProject() {
-        const projectSelect = document.getElementById('project');
-        // If a project is selected, return its value, otherwise, return an empty string
-        // you can also use an if statement to check if projectSelect is null
-        return projectSelect ? projectSelect.value : '';
-    }
-
-    // function to get the selected tool from the dropdown
-    function getSelectedTool() {
-        const toolSelect = document.getElementById('tool');
-        // If a tool is selected, return its value, otherwise, return an empty string
-        // you can also use an if/else statement to check if toolSelect is null
-        return toolSelect ? toolSelect.value : ''; // ternary operator 
-    }
-
-    // event listener for form submission
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            // this will prevent the default form submission
-            e.preventDefault();
-
-            // get the selected values from the form using the helper functions from above
-            const selectedTopic = getSelectedTopic();
-            const selectedProject = getSelectedProject();
-            const selectedTool = getSelectedTool();
-
-            // Log the selected values to the console - you can remove this
-            console.log('Form data:', {
-                topic: selectedTopic,
-                project: selectedProject,
-                tool: selectedTool
-            });
-
-            // Call the function to generate the question
-            // and pass the selected values
-            // because the functions have global scope we can use it here 
-            generateAIQuestion(selectedTopic, selectedProject, selectedTool);
-        });
-    }
+    // tool event setup → step-2.2
+    toolSelect.addEventListener('click', function () {
+        toolSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        console.log('Tool selected:', this.value);
+        generateAIQuestion(topicSelected, projectSelect.value, toolSelect.value);
+    });
 
     // function to generate the AI question based on the selected topic, project, and tool
-    function generateAIQuestion(topic, project, tool) {
-        if (!topic || !project || !tool) {
-            // If any of the fields are empty, show an alert
-            alert('Please complete all the fields'); // Better prompt for UX? 
+    async function generateAIQuestion(topicSelected, projectSelect, toolSelect) {
+        // this if statement checks avoid the function execution if any of the required fields are not really selected
+        if (!topicSelected || projectSelect === 'none' || toolSelect === 'none') {
             return;
         }
-
         const questionTemplates = {
-            'concept': `What is the core concept behind building a ${project} with ${tool}?`,
-            'structure': `How should I structure and organize a ${project} built with ${tool}?`,
-            'details': `Why do certain implementation details matter when building a ${project} with ${tool}?`, // change this q 
-            'technique': `What are the step-by-step techniques for implementing a ${project} with ${tool}?`
+            'concept': `What is the core concept behind building a ${projectSelect} with ${toolSelect}?`,
+            'structure': `How should I structure and organize a ${projectSelect} built with ${toolSelect}?`,
+            'details': `Why do certain implementation details matter when building a ${projectSelect} with ${toolSelect}?`,
+            'technique': `What are the step-by-step techniques for implementing a ${projectSelect} with ${toolSelect}?`
         };
-
-        // Get the question template based on the selected topic
-        const question = questionTemplates[topic];
-
-        const outputSpan = document.getElementById('outputSpan');
-        // If the outputSpan element exists
-        if (outputSpan) {
-            // update its text content
-            outputSpan.textContent = question;
+        const question = questionTemplates[topicSelected];
+        if (outputP) {
+            outputP.textContent = question;
+            if (outputP.textContent) {
+                feedbackSection.style.display = 'block'; // Show feedback section
+            }
         }
-
-        // Log the generated question to the console - you can remove this
         console.log('Generated question:', question);
-    }
+        return true; // Return true to indicate the question was generated successfully
+    };
+
 });
-
-
